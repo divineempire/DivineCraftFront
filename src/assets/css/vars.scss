@@ -1,0 +1,31 @@
+$mobile-width: 360px;
+$tablet-width: 768px;
+$laptop-width: 1024px;
+$desktop-width: 1440px;
+$mobile: 'min-width: #{$mobile-width}';
+$tablet: 'min-width: #{$tablet-width}';
+$laptop: 'min-width: #{$laptop-width}';
+$desktop: 'min-width: #{$desktop-width}';
+$mobile-content-width: 90%;
+$laptop-content-width: 90%;
+//fonts
+$main-font: Montserrat;
+$second-font: 'Orbitron';
+//transition
+$transition: 0.3s ease-in-out;
+//colors
+$good: #00CB6A;
+$error: #EB5757;
+//themes
+//light theme
+
+//dark-theme
+
+:export {
+  mobileWidth: $mobile-width;
+  laptopWidth: $laptop-width;
+  desktopWidth: $desktop-width;
+  goodColor: $good;
+  errorColor: $error;
+}
+
