@@ -2,6 +2,7 @@
   <div
     id="app"
     class="app"
+    :class="tmp ? 'app--dark-theme' : 'app--light-theme'"
   >
     <Header />
     <router-view class="app__body" />
@@ -17,22 +18,29 @@ export default {
   components: {
     Header,
     Footer
+  },
+  data () {
+    return {
+      tmp: true
+    }
+  },
+  mounted () {
+    setTimeout(() => {
+      this.tmp = false
+    }, 3000)
   }
-
 }
 </script>
 <style lang="scss">
 .app {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-image: url('~st/images/main_back.png');
-  background-size: cover;
-  background-repeat: no-repeat;
+  &--dark-theme {
+    @import "./assets/css/dark-theme.scss";
+    --main-color: #{$main-black};
+  }
 
-  &__body {
-    flex-grow: 1;
+  &--light-theme {
+    @import "./assets/css/light-theme.scss";
+    --main-color: #{$main-white};
   }
 }
 </style>

@@ -2,6 +2,7 @@
   <section class="main">
     <div
       v-for="i in 4"
+      :key="i"
       class="qwe"
       @click="tmp"
     >
@@ -22,4 +23,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.main {
+  color: var(--main-color);
+}
 </style>
