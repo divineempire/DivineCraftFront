@@ -1,6 +1,5 @@
 <template>
-  <div class="success">
-  </div>
+  <div class="success" />
 </template>
 
 <script>

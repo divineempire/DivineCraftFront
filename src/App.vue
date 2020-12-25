@@ -1,7 +1,10 @@
 <template>
-  <div id="app" class="app">
+  <div
+    id="app"
+    class="app"
+  >
     <Header />
-    <router-view class="app__body"/>
+    <router-view class="app__body" />
     <Footer />
   </div>
 </template>
@@ -15,18 +18,18 @@ export default {
     Header,
     Footer
   }
+
 }
 </script>
 <style lang="scss">
 .app {
-  background-image: url('~st/images/main_back.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  min-height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  background-image: url('~st/images/main_back.png');
+  background-size: cover;
+  background-repeat: no-repeat;
 
   &__body {
     flex-grow: 1;

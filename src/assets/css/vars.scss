@@ -21,6 +21,7 @@ $error: #EB5757;
 
 //dark-theme
 
+/* stylelint-disable */
 :export {
   mobileWidth: $mobile-width;
   laptopWidth: $laptop-width;
@@ -28,4 +29,5 @@ $error: #EB5757;
   goodColor: $good;
   errorColor: $error;
 }
+/* stylelint-enable */
 

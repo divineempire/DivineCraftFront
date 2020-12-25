@@ -1,7 +1,7 @@
 <template>
   <section class="payment-result">
     <div class="container">
-      <router-view class="payment-result__modal"/>
+      <router-view class="payment-result__modal" />
     </div>
   </section>
 </template>

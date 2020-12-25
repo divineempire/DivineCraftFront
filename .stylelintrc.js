@@ -1,6 +1,8 @@
 module.exports = {
-  'extends': 'stylelint-config-recommended-scss',
-  'rules': {
+  ignoreFiles: ['**/normalize.css'],
+  extends: 'stylelint-config-recommended-scss',
+  rules: {
+    'no-empty-source': null,
     'order/order': [
       'dollar-variables',
       'custom-properties',
@@ -8,11 +10,11 @@ module.exports = {
       'declarations',
       {
         type: 'at-rule',
-        name: 'supports',
+        name: 'supports'
       },
       {
         type: 'at-rule',
-        name: 'media',
+        name: 'media'
       },
       'rules'
     ],
@@ -254,10 +256,10 @@ module.exports = {
       'animation-delay',
       'animation-iteration-count',
       'animation-direction',
-      'animation-fill-mode',
+      'animation-fill-mode'
     ]
   },
-  'plugins': [
+  plugins: [
     'stylelint-order'
   ]
 }

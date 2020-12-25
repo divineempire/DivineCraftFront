@@ -6,7 +6,7 @@ module.exports = {
   },
 
   parserOptions: {
-    parser: 'babel-eslint',
+    parser: 'babel-eslint'
   },
 
   rules: {
@@ -23,5 +23,5 @@ module.exports = {
     'plugin:vue/recommended',
     'eslint:recommended',
     '@vue/standard'
-  ],
+  ]
 }

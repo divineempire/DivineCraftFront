@@ -1,7 +1,5 @@
 <template>
-  <div class="fail">
-
-  </div>
+  <div class="fail" />
 </template>
 
 <script>
