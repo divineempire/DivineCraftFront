@@ -5,7 +5,7 @@ export function checkAvailability (ctx, payload) {
     })
 }
 
-export function tryToBuy ({dispatch, state}) {
+export function tryToBuy ({ dispatch, state }) {
   return dispatch('checkAvailability', state.currentAccountToBuy.id)
     .then(res => {
       if (res) {
@@ -16,7 +16,7 @@ export function tryToBuy ({dispatch, state}) {
     })
 }
 
-export function buyProducts ({state}) {
+export function buyProducts ({ state }) {
   return this.$productsApi.buyProducts({
     email: state.email,
     products: [
@@ -28,7 +28,6 @@ export function buyProducts ({state}) {
   })
 }
 
-
-export function checkLastPurchases(ctx, payload) {
-    return this.$productsApi.checkLastPurchases(payload)
+export function checkLastPurchases (ctx, payload) {
+  return this.$productsApi.checkLastPurchases(payload)
 }

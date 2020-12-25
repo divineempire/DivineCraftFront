@@ -1,6 +1,12 @@
 <template>
   <div class="input-group">
-    <input class="input-group__input" :required="required" v-model="_value" :placeholder="placeholder" :type="type"/>
+    <input
+      v-model="_value"
+      class="input-group__input"
+      :required="required"
+      :placeholder="placeholder"
+      :type="type"
+    >
   </div>
 </template>
 
@@ -42,21 +48,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.input-group {
-  &__input {
-    padding: 10px;
-    font-size: 14px;
-    line-height: 17px;
-    background-color: $main-white;
-    border-radius: 4px;
-    border: none;
-    width: 100%;
-
-    &::placeholder {
-      font-size: 14px;
-      line-height: 17px;
-      color: $main-black;
-    }
-  }
-}
 </style>

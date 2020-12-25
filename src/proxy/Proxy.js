@@ -1,10 +1,10 @@
 export default class Proxy {
-  constructor(store, path) {
+  constructor (store, path) {
     this.store = store
     this.path = path
   }
 
-  submit({method = 'get', data = null, query = null, endpoint = ''}) {
+  submit ({ method = 'get', data = null, query = null, endpoint = '' }) {
     const options = {
       method,
       query,

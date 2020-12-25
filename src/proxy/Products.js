@@ -19,7 +19,7 @@ export default class ProductsProxy extends Proxy {
     })
   }
 
-  buyProducts ({coupon = '', username = '', email = '', products = []}) {
+  buyProducts ({ coupon = '', username = '', email = '', products = [] }) {
     const data = {
       player: {
         username,
@@ -39,7 +39,7 @@ export default class ProductsProxy extends Proxy {
     })
   }
 
-  checkLastPurchases(orderId) {
+  checkLastPurchases (orderId) {
     return this.submit({
       endpoint: `lastPurchasedValues/${orderId}`
     })

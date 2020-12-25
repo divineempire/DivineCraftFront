@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Axios from 'axios'
-//modules
+// modules
 import packs from './packs/index'
 import global from './global/index'
 import buy from './buy/index'
-//proxies
+// proxies
 import ProductsProxy from '@/proxy/Products'
 Vue.use(Vuex)
 
-const store =  new Vuex.Store({
+const store = new Vuex.Store({
   modules: {
     packs,
     global,
@@ -21,7 +21,7 @@ store.$axios = Axios.create({
   baseURL: 'https://api.fixgame.ru'
 })
 
-store.$submit = function({method = 'get', data = null, query = null, url = ''}) {
+store.$submit = function ({ method = 'get', data = null, query = null, url = '' }) {
   const options = {
     method,
     url
@@ -33,7 +33,7 @@ store.$submit = function({method = 'get', data = null, query = null, url = ''}) 
 
   if (query) {
     options.url += '?'
-    for (let key in query) {
+    for (const key in query) {
       options.url += `${key}=${query[key]}&`
     }
     options.url.slice(0, -1) // remove lst &
