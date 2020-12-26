@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import store from './store'
 import router from './router'
-import VueMq from 'vue-mq'
+import VueMq from './plugins/mq/index'
 // global styles
 import '@/assets/css/typography.scss'
 // global classes like container etc
@@ -13,7 +13,7 @@ import '@/assets/css/fonts.scss'
 import '@/assets/css/normalize.css'
 
 // import widths from css
-import { laptopWidth, desktopWidth } from '@/assets/css/vars.scss'
+import { mobileWidth, tabletWidth, laptopWidth, desktopWidth } from '@/assets/css/vars.scss'
 // building sprite
 const req = require.context('@/assets/icons', true)
 req.keys().forEach(function (key) {
@@ -26,16 +26,15 @@ req.keys().forEach(function (key) {
 // })
 
 // eslint-disable-next-line no-unused-vars
-const app = createApp({
-  App
-})
+const app = createApp(App)
   .use(router)
   .use(store)
   .use(VueMq, {
-    breakpoints: { // default breakpoints - customize this
-      mobile: parseInt(laptopWidth.replace('px', ''), 10),
-      laptop: parseInt(desktopWidth.replace('px', ''), 10),
-      desktop: Infinity
+    breakpoints: {
+      mobile: parseInt(mobileWidth.replace('px', ''), 10),
+      tablet: parseInt(tabletWidth.replace('px', ''), 10),
+      laptop: parseInt(laptopWidth.replace('px', ''), 10),
+      desktop: parseInt(desktopWidth.replace('px', ''), 10)
     }
   })
-  .mount('#app')
+app.mount('#app')

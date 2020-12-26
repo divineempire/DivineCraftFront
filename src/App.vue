@@ -1,8 +1,7 @@
 <template>
   <div
     id="app"
-    class="app"
-    :class="tmp ? 'app--dark-theme' : 'app--light-theme'"
+    class="app app--light-theme"
   >
     <Header />
     <router-view class="app__body" />
@@ -12,22 +11,12 @@
 
 <script>
 import Footer from '@/components/Footer'
-import Header from '@/components/Header'
+import Header from '@/components/Header/Header'
 export default {
   name: 'App',
   components: {
     Header,
     Footer
-  },
-  data () {
-    return {
-      tmp: true
-    }
-  },
-  mounted () {
-    setTimeout(() => {
-      this.tmp = false
-    }, 3000)
   }
 }
 </script>
@@ -35,12 +24,13 @@ export default {
 .app {
   &--dark-theme {
     @import "assets/css/dark-theme";
-    --main-color: #{$main-black};
+    --back-color: #{$main-black};
   }
 
   &--light-theme {
     @import "assets/css/light-theme";
-    --main-color: #{$main-white};
+    --back-color: #{$main-white};
+    --text-colro: #{$main-black};
   }
 }
 </style>
