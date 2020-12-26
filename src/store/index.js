@@ -1,9 +1,9 @@
 import Vuex from 'vuex'
 import Axios from 'axios'
 // modules
-import packs from './packs/index'
-import global from './global/index'
-import buy from './buy/index'
+import packs from './packs'
+import global from './global'
+import buy from './buy'
 // proxies
 import ProductsProxy from '@/proxy/Products'
 

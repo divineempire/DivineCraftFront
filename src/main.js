@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import store from './store'
 import router from './router'
@@ -20,12 +20,13 @@ req.keys().forEach(function (key) {
   req(key)
 })
 // directives
-const directives = require.context('@/directives', true)
-directives.keys().forEach(function (key) {
-  directives(key)
-})
+// const directives = require.context('@/directives', true)
+// directives.keys().forEach(function (key) {
+//   directives(key)
+// })
 
-Vue.createApp({
+// eslint-disable-next-line no-unused-vars
+const app = createApp({
   App
 })
   .use(router)

@@ -34,12 +34,12 @@ export default {
 <style lang="scss">
 .app {
   &--dark-theme {
-    @import "./assets/css/dark-theme.scss";
+    @import "assets/css/dark-theme";
     --main-color: #{$main-black};
   }
 
   &--light-theme {
-    @import "./assets/css/light-theme.scss";
+    @import "assets/css/light-theme";
     --main-color: #{$main-white};
   }
 }
