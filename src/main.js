@@ -24,17 +24,17 @@ const directives = require.context('@/directives', true)
 directives.keys().forEach(function (key) {
   directives(key)
 })
-Vue.use(VueMq, {
-  breakpoints: { // default breakpoints - customize this
-    mobile: parseInt(laptopWidth.replace('px', ''), 10),
-    laptop: parseInt(desktopWidth.replace('px', ''), 10),
-    desktop: Infinity
-  }
-})
-Vue.config.productionTip = false
 
-new Vue({
-  store,
-  router,
-  render: h => h(App)
-}).$mount('#app')
+Vue.createApp({
+  App
+})
+  .use(router)
+  .use(store)
+  .use(VueMq, {
+    breakpoints: { // default breakpoints - customize this
+      mobile: parseInt(laptopWidth.replace('px', ''), 10),
+      laptop: parseInt(desktopWidth.replace('px', ''), 10),
+      desktop: Infinity
+    }
+  })
+  .mount('#app')

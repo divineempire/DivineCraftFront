@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import Vuex from 'vuex'
 import Axios from 'axios'
 // modules
@@ -7,9 +6,8 @@ import global from './global/index'
 import buy from './buy/index'
 // proxies
 import ProductsProxy from '@/proxy/Products'
-Vue.use(Vuex)
 
-const store = new Vuex.Store({
+const store = Vuex.createStore({
   modules: {
     packs,
     global,
