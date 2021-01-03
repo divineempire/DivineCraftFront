@@ -1,0 +1,18 @@
+$guard-color: #00C149;
+$divine-color: #FE6EFE;
+$immortal-color: #FF5555;
+$legend-color: #FF8B24;
+$knight-color: #FFC000;
+$warrior-color: #0082F0;
+$youtube-color: #4D4D4D;
+$moder-color: #00AAAA;
+$helper-color: #5DC52A;
+$privileges: (guard: $guard-color,
+        divine: $divine-color,
+        immortal: $immortal-color,
+        legend: $legend-color,
+        knight: $knight-color,
+        warrior: $warrior-color,
+        youtube: $youtube-color,
+        moder: $moder-color,
+        helper: $helper-color);

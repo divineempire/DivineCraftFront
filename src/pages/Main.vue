@@ -1,29 +1,49 @@
 <template>
-  <section class="main">
-    <div
-      v-for="i in 4"
-      :key="i"
-      class="qwe"
-      @click="tmp"
-    >
-      {{ i }}
-    </div>
-  </section>
+  <body class="main">
+    <WelcomeBanner
+      v-in-viewport="'banner'"
+      class="main__welcome-banner"
+    />
+    <Privileges
+      v-in-viewport="'privileges'"
+      class="main__privileges"
+    />
+    <PopularProducts
+      v-in-viewport="'products'"
+      class="main__popular-products"
+    />
+    <Categories
+      v-in-viewport="'categories'"
+      class="main__categories"
+    />
+  </body>
 </template>
 
 <script>
+import Categories from '@/components/Main/Categories/Categories'
+import PopularProducts from '@/components/Main/PopularProducts/PopularProducts'
+import Privileges from '@/components/Main/Privileges/Privileges'
+import WelcomeBanner from '@/components/Main/WelcomeBanner'
+
 export default {
   name: 'Main',
-  methods: {
-    tmp () {
-      console.log('123')
-    }
+  components: {
+    WelcomeBanner,
+    Privileges,
+    PopularProducts,
+    Categories
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .main {
-  color: var(--main-color);
+  &__welcome-banner {
+    margin-bottom: 40px;
+  }
+
+  &__privileges {
+    margin-bottom: 40px;
+  }
 }
 </style>

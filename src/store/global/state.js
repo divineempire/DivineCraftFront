@@ -1,6 +1,13 @@
 export default function () {
   return {
     errorText: '',
-    devErrorText: ''
+    devErrorText: '',
+    currentSection: '',
+    headerColors: {
+      banner: 'contrast',
+      privileges: 'text',
+      products: 'contrast',
+      categories: 'text'
+    }
   }
 }

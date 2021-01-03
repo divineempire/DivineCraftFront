@@ -1,0 +1,6 @@
+@mixin theme($back-color, $text-color) {
+  --back-color: #{$back-color};
+  --text-color: #{$text-color};
+  background-color: var(--back-color);
+  color: var(--text-color);
+}

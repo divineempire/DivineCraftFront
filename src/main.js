@@ -3,6 +3,7 @@ import App from './App.vue'
 import store from './store'
 import router from './router'
 import VueMq from './plugins/mq/index'
+import CustomDirectives from './plugins/CustomDirectives/index'
 // global styles
 import '@/assets/css/typography.scss'
 // global classes like container etc
@@ -19,16 +20,11 @@ const req = require.context('@/assets/icons', true)
 req.keys().forEach(function (key) {
   req(key)
 })
-// directives
-// const directives = require.context('@/directives', true)
-// directives.keys().forEach(function (key) {
-//   directives(key)
-// })
-
 // eslint-disable-next-line no-unused-vars
 const app = createApp(App)
   .use(router)
   .use(store)
+  .use(CustomDirectives)
   .use(VueMq, {
     breakpoints: {
       mobile: parseInt(mobileWidth.replace('px', ''), 10),

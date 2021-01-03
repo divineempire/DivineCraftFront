@@ -6,6 +6,8 @@ $mobile: 'min-width: #{$mobile-width}';
 $tablet: 'min-width: #{$tablet-width}';
 $laptop: 'min-width: #{$laptop-width}';
 $desktop: 'min-width: #{$desktop-width}';
+$retina-dpi: 192dpi;
+$retina: 'min-resolution: #{$retina-dpi}';
 $mobile-content-width: 90%;
 $laptop-content-width: 90%;
 //fonts
@@ -13,14 +15,16 @@ $main-font: Montserrat;
 $second-font: 'Orbitron';
 //transition
 $transition: 0.3s ease-in-out;
-//colors
+//global colors
 $good: #00CB6A;
 $error: #EB5757;
 $black: #141414;
-//themes
-//light theme
-
-//dark-theme
+$white: #ffffff;
+$blue: #1C84FF;
+$footer-color: #0A0A0A;
+$accent: #FFC801;
+//privileges colors
+@import "./privilege-colors.scss";
 
 /* stylelint-disable */
 :export {
@@ -30,6 +34,7 @@ $black: #141414;
   desktopWidth: $desktop-width;
   goodColor: $good;
   errorColor: $error;
+  retinaQuery: $retina;
 }
 /* stylelint-enable */
 

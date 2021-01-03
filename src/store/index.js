@@ -1,22 +1,26 @@
 import Vuex from 'vuex'
 import Axios from 'axios'
 // modules
-import packs from './packs'
+import privileges from './privileges'
+import products from './products'
 import global from './global'
-import buy from './buy'
+import cart from './cart'
+import categories from './categories'
 // proxies
 import ProductsProxy from '@/proxy/Products'
 
 const store = Vuex.createStore({
   modules: {
-    packs,
+    privileges,
+    products,
     global,
-    buy
+    cart,
+    categories
   }
 })
 
 store.$axios = Axios.create({
-  baseURL: 'https://api.fixgame.ru'
+  baseURL: 'https://divinecraft.online'
 })
 
 store.$submit = function ({ method = 'get', data = null, query = null, url = '' }) {

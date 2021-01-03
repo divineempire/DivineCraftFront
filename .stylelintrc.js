@@ -14,6 +14,10 @@ module.exports = {
       'declarations',
       {
         type: 'at-rule',
+        name: 'each'
+      },
+      {
+        type: 'at-rule',
         name: 'supports'
       },
       {

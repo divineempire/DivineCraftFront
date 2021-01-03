@@ -1,12 +1,12 @@
 {
   "name": "Divinecraft",
-  "version": "1.1.0",
+  "version": "1.1.4",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "inspect": "vue-cli-service inspect > conf.txt",
+    "inspect": "rm conf.txt && vue-cli-service inspect > conf.txt",
     "stylelint": "stylelint '**/*{.css,.scss,.vue}' --fix"
   },
   "dependencies": {
@@ -14,7 +14,7 @@
     "@vue/eslint-config-standard": "^6.0.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
-    "node-sass": "^4.12.0",
+    "sass": "^1.32.0",
     "vue": "^3.0.0",
     "vue-mq": "^1.0.1",
     "vue-router": "^4.0.1",

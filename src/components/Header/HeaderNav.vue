@@ -40,5 +40,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.nav {
+  padding-left: 15px;
+  &__link {
+    display: block;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    font-size: 18px;
+    font-family: $second-font;
+    line-height: 21px;
+    text-decoration: none;
+  }
+}
 </style>
