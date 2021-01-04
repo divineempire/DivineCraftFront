@@ -7,6 +7,7 @@ export function setDevErrorText (state, payload) {
 }
 
 export function setActiveSection (state, payload) {
-  console.log('setting active section ', payload)
-  state.activeSection = payload
+  if (state.activeSection !== payload) {
+    state.activeSection = payload
+  }
 }

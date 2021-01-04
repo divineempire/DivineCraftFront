@@ -49,7 +49,8 @@ export default {
 
 <style lang="scss" scoped>
 .privileges {
-  padding-bottom: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 
   &__header {
     margin: 0 0 20px;

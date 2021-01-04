@@ -37,13 +37,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main {
-  &__welcome-banner {
-    margin-bottom: 40px;
-  }
-
-  &__privileges {
-    margin-bottom: 40px;
-  }
-}
 </style>

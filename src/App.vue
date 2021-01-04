@@ -43,12 +43,12 @@ export default {
 
   &--dark-theme {
     @import "assets/css/dark-theme.scss";
-    @include theme($back-color, $text-color);
+    @include theme($back-color, $text-color, $header-color, $header-accent-color);
   }
 
   &--light-theme {
     @import "assets/css/light-theme.scss";
-    @include theme($back-color, $text-color);
+    @include theme($back-color, $text-color, $header-color, $header-accent-color);
   }
 }
 </style>

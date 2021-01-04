@@ -2,11 +2,11 @@ export default function () {
   return {
     errorText: '',
     devErrorText: '',
-    currentSection: '',
+    activeSection: '',
     headerColors: {
-      banner: 'contrast',
+      banner: 'accent',
       privileges: 'text',
-      products: 'contrast',
+      products: 'accent',
       categories: 'text'
     }
   }

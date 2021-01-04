@@ -1,24 +1,24 @@
 <template>
   <header
     class="header"
-    :class="[isMenuShow ? 'header--opened' : 'header--closed']"
+    :class="[isMenuShow ? 'header--opened' : 'header--closed', `header--${color}`]"
   >
     <BurgerMenu
       v-show="$mq === 'mobile'"
+      :color="color"
+      :is-open="isMenuShow"
       class="header__burger-menu"
       @click="toggleMenu"
     />
-    <div class="header__play-wrapper">
-      <a
-        href="#"
-        class="header__play-link"
+    <div class="header__navigation">
+      <HeaderNav
+        class="header__nav"
+        :color="color"
       />
-    </div>
-    <div class="header__nav-wrapper">
-      <HeaderNav class="header__nav" />
-    </div>
-    <div class="header__basket-wrapper">
-      <HeaderBasket class="header__basket" />
+      <HeaderBasket
+        class="header__basket"
+        :color="color"
+      />
     </div>
   </header>
 </template>
@@ -55,23 +55,12 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  z-index: 10;
+  width: 50%;
   height: 100vh;
-  padding-top: 5px;
   padding-left: 30px;
   background-color: transparent;
-  transition: transform $transition;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 30px;
-    z-index: -1;
-    width: calc(100% - 30px);
-    height: 100vh;
-    background-color: var(--back-color);
-  }
+  transition: transform $transition, background-color $transition;
 
   &__burger-menu {
     position: absolute;
@@ -79,12 +68,68 @@ export default {
     left: 5px;
   }
 
+  &__navigation {
+    position: relative;
+    padding-top: 5px;
+    transition: opacity $transition;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -30px;
+      z-index: -1;
+      display: block;
+      width: calc(100% + 30px);
+      height: calc(100% + 80px);
+      background: var(--header-accent-gradient);
+      transition: opacity $transition, background $transition;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -30px;
+      z-index: -1;
+      display: block;
+      width: calc(100% + 30px);
+      height: calc(100% + 80px);
+      background: var(--header-gradient);
+      transition: opacity $transition, background $transition;
+    }
+  }
+
   &--closed {
-    transform: translateX(calc(100% - 30px));
+    transform: translateX(calc(200% - 30px));
+
+    .header__navigation::before, .header__navigation::after {
+      opacity: 0;
+    }
   }
 
   &--opened {
-    transform: translateX(0);
+    transform: translateX(100%);
+  }
+
+  &--opened#{&}--accent {
+    .header__navigation::before {
+      opacity: 1;
+    }
+
+    .header__navigation::after {
+      opacity: 0;
+    }
+  }
+
+  &-opened#{&}--text {
+    .header__navigation::before {
+      opacity: 0;
+    }
+
+    .header__navigation::after {
+      opacity: 1;
+    }
   }
 }
 </style>
