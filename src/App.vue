@@ -1,6 +1,6 @@
 <template>
   <div
-    class="app app--light-theme"
+    class="app app--dark-theme"
   >
     <Header />
     <router-view class="app__body" />

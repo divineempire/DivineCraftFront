@@ -57,20 +57,24 @@ export default {
   left: 0;
   z-index: 10;
   width: 50%;
-  height: 100vh;
   padding-left: 30px;
   background-color: transparent;
   transition: transform $transition, background-color $transition;
 
   &__burger-menu {
     position: absolute;
-    top: 5px;
+    top: 15px;
     left: 5px;
+  }
+
+  &__nav {
+    margin-bottom: 20px;
   }
 
   &__navigation {
     position: relative;
     padding-top: 5px;
+    padding-left: 15px;
     transition: opacity $transition;
 
     &::before {

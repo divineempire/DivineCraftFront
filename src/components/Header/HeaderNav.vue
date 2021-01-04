@@ -57,11 +57,9 @@ export default {
 
 <style lang="scss" scoped>
 .nav {
-  padding-left: 15px;
-
   &__link {
     display: block;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: var(--text-color);
     font-size: 18px;
     font-family: $second-font;
@@ -76,7 +74,7 @@ export default {
 
   &__play-link {
     display: block;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: $blue;
     font-size: 14px;
     line-height: 21px;
