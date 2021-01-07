@@ -1,7 +1,7 @@
 @mixin theme($back-color, $text-color, $header-color, $header-accent-color) {
   --back-color: #{$back-color};
+  --second-back-color: #{$header-color};
   --text-color: #{$text-color};
-  --header-color: #{$header-color};
   --header-accent-color: #{$header-accent-color};
   --header-gradient: linear-gradient(180deg, #{rgb($header-color, 1)} 50%, #{rgb($header-color, 0)} 100%);
   --header-accent-gradient: linear-gradient(180deg, #{rgb($header-accent-color, 1)} 50%, #{rgb($header-accent-color, 0)} 100%);

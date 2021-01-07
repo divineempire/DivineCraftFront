@@ -8,6 +8,11 @@ export default [
     component: Main
   },
   {
+    path: '/privilege/:name',
+    name: 'privilege',
+    component: () => import('@/pages/Privilege')
+  },
+  {
     path: '/result',
     name: 'result',
     component: PaymentResult,

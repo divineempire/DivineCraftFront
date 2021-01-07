@@ -34,7 +34,7 @@ export default {
   },
   setup () {
     const store = useStore()
-    console.log(store)
+
     return {
       amountInCart: computed(() => store.getters['cart/getTotalAmountInCart'])
     }

@@ -10,9 +10,13 @@
       <p class="privilege__description">
         {{ description }}
       </p>
-      <p class="privilege__price">
+      <router-link
+        :to="`/privilege/${privilegeName}`"
+        type="button"
+        class="privilege__price"
+      >
         от {{ price }} ₽
-      </p>
+      </router-link>
     </div>
     <div class="privilege__img-wrapper">
       <img
@@ -101,12 +105,19 @@ export default {
   }
 
   &__price {
+    width: 100%;
     margin: 0;
     padding: 10px 15px;
     border: 2px solid $white;
     border-radius: 10px;
+    background-color: transparent;
     color: $white;
+    outline: none;
     text-align: center;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
 }
