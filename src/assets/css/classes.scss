@@ -1,3 +1,5 @@
+@import "./privilege-colors";
+
 *,
 *::before,
 *::after {
@@ -15,4 +17,10 @@ body {
 .container {
   width: 77%;
   margin: 0 auto;
+}
+
+@each $privilege, $color in $privileges {
+  .privilege-back-color--#{$privilege} {
+    background-color: $color;
+  }
 }

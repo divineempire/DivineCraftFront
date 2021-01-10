@@ -45,6 +45,7 @@
           :description="privilege.description"
         />
         <OtherPrivileges
+          :key="otherPrivilegesKey"
           class="privilege__other-privileges"
           :privileges="otherPrivileges"
         />
@@ -62,7 +63,7 @@ import Intro from '@/components/Privilege/Intro'
 
 import otherPrivilegesComposition from '@/composition/Privileges/OtherPrivileges'
 
-import { computed, toRefs, unref } from 'vue'
+import { computed, toRefs, unref, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 
@@ -76,12 +77,12 @@ export default {
     OtherPrivileges
   },
   setup () {
+    const otherPrivilegesKey = ref(0)
     const { params, query } = toRefs(useRoute())
     const store = useStore()
     const router = useRouter()
     const types = new Set(['30d', '90d', 'forever'])
-    const { name } = unref(params)
-    const privileges = computed(() => store.getters['privileges/getPrivilegesByName'](name))
+    const privileges = computed(() => store.getters['privileges/getPrivilegesByName'](params.value.name))
     const currentType = computed({
       get: () => types.has(unref(query).type) ? unref(query).type : 'forever',
       set: newVal => {
@@ -95,13 +96,18 @@ export default {
     const privilege = computed(() => unref(privileges)
       .find(privilege => privilege.name === `${name.toLowerCase()}_${unref(currentType)}`) || unref(privileges)[0])
 
-    const { otherPrivileges } = otherPrivilegesComposition({ store, privilegeName: name })
+    const { otherPrivileges } = otherPrivilegesComposition({ store, privilegeName: params.value.name })
+
+    watch(() => params.value, () => {
+      otherPrivilegesKey.value++
+    })
 
     return {
       privileges,
       privilege,
       currentType,
       otherPrivileges,
+      otherPrivilegesKey,
       formattedType: computed(() => {
         switch (unref(currentType)) {
           case '30d':
@@ -124,6 +130,10 @@ export default {
 
   &__back {
     margin: 0 auto;
+  }
+
+  &__intro, &__price, &__description {
+    margin-bottom: 30px;
   }
 }
 </style>

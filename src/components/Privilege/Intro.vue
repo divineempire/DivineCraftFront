@@ -87,7 +87,7 @@ export default {
   padding: 0 10px;
 
   &__title {
-    margin: 0;
+    margin: 0 0 10px 0;
     color: var(--text-color);
     font-weight: 800;
     font-size: 30px;
@@ -95,7 +95,7 @@ export default {
   }
 
   &__description {
-    margin: 0;
+    margin: 0 0 10px 0;
     color: var(--text-color);
     font-size: 16px;
     line-height: 21px;
@@ -109,11 +109,27 @@ export default {
   }
 
   &__control {
+    $self: &;
     margin-bottom: 10px;
     padding: 10px;
     border: 1px solid var(--text-color);
     border-radius: 10px;
     background-color: transparent;
+    transition: border-color $transition;
+
+    &-text {
+      transition: color $transition;
+    }
+
+    &--active {
+      border-color: $blue;
+
+      #{$self} {
+        &-text {
+          color: $blue;
+        }
+      }
+    }
 
     &:not(:last-child) {
       margin-right: 10px;
@@ -132,6 +148,7 @@ export default {
     position: relative;
     width: 204px;
     height: 264px;
+    margin-bottom: 10px;
   }
 
   &__img {

@@ -3,6 +3,7 @@ module.exports = {
   extends: 'stylelint-config-recommended-scss',
   rules: {
     'no-empty-source': null,
+    'no-duplicate-selectors': null,
     'order/order': [
       {
         type: 'at-rule',
