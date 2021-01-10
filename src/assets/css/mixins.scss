@@ -8,3 +8,13 @@
   background-color: var(--back-color);
   color: var(--text-color);
 }
+
+@mixin hover($content: false) {
+  &:hover {
+
+    @if $content {
+      @content;
+    }
+    cursor: pointer;
+  }
+}

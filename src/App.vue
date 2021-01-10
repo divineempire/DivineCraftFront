@@ -35,8 +35,6 @@ export default {
 </script>
 <style lang="scss">
 .app {
-  @import "assets/css/mixins.scss";
-
   position: relative;
   width: 100%;
   max-width: 100%;
