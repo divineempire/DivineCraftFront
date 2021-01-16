@@ -1,5 +1,7 @@
+const path = require('path')
+
 module.exports = {
-  ignoreFiles: ['**/normalize.css'],
+  ignoreFiles: ['**/normalize.css', path.resolve(__dirname, 'src/assets/css/mixins.scss')],
   extends: 'stylelint-config-recommended-scss',
   rules: {
     'no-empty-source': null,

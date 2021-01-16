@@ -19,6 +19,9 @@
 </template>
 
 <script>
+import { toRefs } from 'vue'
+import otherPrivilegesComposition from '@/composition/Privileges/OtherPrivileges'
+
 import OtherPrivilege from '@/components/Privilege/OtherPrivileges/OtherPrivilege'
 
 export default {
@@ -27,11 +30,16 @@ export default {
     OtherPrivilege
   },
   props: {
-    privileges: {
-      type: Array,
+    privilegeName: {
+      type: String,
       require: true,
-      default: () => []
+      default: ''
     }
+  },
+  setup (props) {
+    const { privilegeName } = toRefs(props)
+
+    return { privileges: otherPrivilegesComposition(privilegeName) }
   }
 }
 </script>

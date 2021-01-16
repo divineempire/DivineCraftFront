@@ -9,6 +9,7 @@ const selectQuery = (keys, options, mq) => {
 
 export function subscribeToResize (options, mq) {
   const keys = Object.keys(options)
+
   window.addEventListener('resize', () => {
     selectQuery(keys, options, mq)
   })
@@ -16,5 +17,6 @@ export function subscribeToResize (options, mq) {
 
 export function initialQueryDetecting (options, mq) {
   const keys = Object.keys(options)
+
   selectQuery(keys, options, mq)
 }

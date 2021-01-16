@@ -4,6 +4,7 @@ export default {
     mounted (el, { instance, value }) {
       instance.$inViewportHandler = function () {
         const { top, bottom } = el.getBoundingClientRect()
+
         if (top <= 0 && bottom >= 0) {
           instance.$store.commit('global/setActiveSection', value)
         }

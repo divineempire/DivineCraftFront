@@ -24,7 +24,7 @@
           v-if="amount === 0"
           class="add-to-cart__icon"
         >
-          <use xlink:href="#basket" />
+          <use xlink:href="#cart" />
         </svg>
         <span
           v-else

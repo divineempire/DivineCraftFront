@@ -18,3 +18,27 @@
     cursor: pointer;
   }
 }
+
+@mixin back-retina($dir) {
+  background-image: url('~st/images/#{$dir}/back@1x.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @media ($retina) {
+    background-image: url('~st/images/#{$dir}/back@2x.jpg');
+  }
+}
+
+@mixin transition($properties...) {
+  $result: ();
+  $will-change: ();
+
+  @each $property in $properties {
+    $result: append($result, ($property $transition), $separator: comma);
+    $will-change: append($will-change, ($property), $separator: comma);
+  }
+
+  transition: $result;
+  will-change: $will-change;
+}

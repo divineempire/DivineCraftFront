@@ -13,6 +13,16 @@ export default [
     component: () => import('@/pages/Privilege')
   },
   {
+    path: '/products/:name',
+    name: 'category',
+    component: () => import('@/pages/Products')
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: () => import('@/pages/Cart')
+  },
+  {
     path: '/result',
     name: 'result',
     component: PaymentResult,

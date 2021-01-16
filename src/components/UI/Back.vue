@@ -51,6 +51,7 @@ export default {
     display: flex;
     align-items: center;
     margin-right: 10px;
+    text-decoration: none;
   }
 
   &__icon {

@@ -8,8 +8,9 @@ $laptop: 'min-width: #{$laptop-width}';
 $desktop: 'min-width: #{$desktop-width}';
 $retina-dpi: 192dpi;
 $retina: 'min-resolution: #{$retina-dpi}';
-$mobile-content-width: 90%;
-$laptop-content-width: 90%;
+$content-width: 90%;
+$min-widths: (mobile: $mobile-width, tablet: $tablet-width, laptop: $laptop-width, desktop: $desktop-width);
+$max-widths: (mobile: $tablet-width, tablet: $laptop-width, laptop: $desktop-width);
 //fonts
 $main-font: Montserrat;
 $second-font: 'Orbitron';

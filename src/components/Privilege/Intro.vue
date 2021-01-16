@@ -13,29 +13,22 @@
     <h2 class="intro__title">
       <slot name="title" />
     </h2>
+    <PrivilegeControls v-model:current-type="innerCurrentType" />
     <p class="intro__description">
       <slot name="description" />
     </p>
-    <div class="intro__controls">
-      <button
-        v-for="type in privilegeTypes"
-        :key="type"
-        type="button"
-        class="intro__control"
-        :class="currentType === type.value && 'intro__control--active'"
-        @click="$emit('update:current-type', type.value)"
-      >
-        <span class="intro__control-text">
-          {{ type.title }}
-        </span>
-      </button>
-    </div>
   </div>
 </template>
 
 <script>
+import { toRefs, computed } from 'vue'
+import PrivilegeControls from '@/components/Privilege/PrivilegeControls'
+
 export default {
   name: 'Intro',
+  components: {
+    PrivilegeControls
+  },
   props: {
     imgLink: {
       type: String,
@@ -56,22 +49,18 @@ export default {
   emits: {
     'update:current-type': null
   },
-  setup () {
+  setup (props, { emit }) {
+    const { currentType } = toRefs(props)
+
     return {
-      privilegeTypes: [
-        {
-          value: '30d',
-          title: '30 дней'
+      innerCurrentType: computed({
+        get () {
+          return currentType.value
         },
-        {
-          value: '90d',
-          title: '90 дней'
-        },
-        {
-          value: 'forever',
-          title: 'Навсегда'
+        set (newVal) {
+          emit('update:current-type', newVal)
         }
-      ]
+      })
     }
   }
 }

@@ -20,9 +20,9 @@
 </template>
 
 <script>
-import Categories from '@/components/Main/Categories/Categories'
-import PopularProducts from '@/components/Main/PopularProducts/PopularProducts'
-import Privileges from '@/components/Main/Privileges/Privileges'
+import Categories from '@/components/Main/Categories'
+import PopularProducts from '@/components/Main/PopularProducts'
+import Privileges from '@/components/Main/Privileges'
 import WelcomeBanner from '@/components/Main/WelcomeBanner'
 
 export default {

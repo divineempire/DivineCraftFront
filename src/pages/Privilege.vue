@@ -26,7 +26,10 @@
             {{ privilege.description }}
           </template>
         </Intro>
-        <Price class="privilege__price">
+        <Price
+          class="privilege__price"
+          @addPrivilegeToCart="addPrivilegeToCart"
+        >
           <template #pre-price>
             {{ privilege.prePrice }}
           </template>
@@ -47,7 +50,7 @@
         <OtherPrivileges
           :key="otherPrivilegesKey"
           class="privilege__other-privileges"
-          :privileges="otherPrivileges"
+          :privilege-name="name"
         />
       </div>
     </div>
@@ -55,17 +58,19 @@
 </template>
 
 <script>
-import OtherPrivileges from '@/components/Privilege/OtherPrivileges/OtherPrivileges'
+import OtherPrivileges from '@/components/Privilege/OtherPrivileges'
 import Description from '@/components/Privilege/Description'
 import Price from '@/components/Privilege/Price'
 import Back from '@/components/UI/Back'
 import Intro from '@/components/Privilege/Intro'
 
-import otherPrivilegesComposition from '@/composition/Privileges/OtherPrivileges'
-
 import { computed, toRefs, unref, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
+import addPrivilege from '@/composition/Privileges/addPrivilegeToCart'
+
+import { TYPES, FOREVER } from '@/constants/privileges/privilegesTypes'
+import privilegesTypeTranslator from '@/utils/privilegesTypeTranslator'
 
 export default {
   name: 'Privilege',
@@ -77,14 +82,14 @@ export default {
     OtherPrivileges
   },
   setup () {
-    const otherPrivilegesKey = ref(0)
-    const { params, query } = toRefs(useRoute())
-    const store = useStore()
     const router = useRouter()
-    const types = new Set(['30d', '90d', 'forever'])
-    const privileges = computed(() => store.getters['privileges/getPrivilegesByName'](params.value.name))
+    const store = useStore()
+    const route = useRoute()
+    const otherPrivilegesKey = ref(0)
+    const { params, query } = toRefs(route)
+    const privileges = computed(() => store.getters['privileges/getPrivilegesByName'](unref(params).name))
     const currentType = computed({
-      get: () => types.has(unref(query).type) ? unref(query).type : 'forever',
+      get: () => TYPES.has(unref(query).type) ? unref(query).type : FOREVER,
       set: newVal => {
         router.push({
           query: {
@@ -94,9 +99,8 @@ export default {
       }
     })
     const privilege = computed(() => unref(privileges)
-      .find(privilege => privilege.name === `${name.toLowerCase()}_${unref(currentType)}`) || unref(privileges)[0])
-
-    const { otherPrivileges } = otherPrivilegesComposition({ store, privilegeName: params.value.name })
+      .find(privilege => privilege.name === `${unref(params).name.toLowerCase()}_${unref(currentType)}`) || unref(privileges)[0])
+    const { addPrivilegeToCart } = addPrivilege(privilege)
 
     watch(() => params.value, () => {
       otherPrivilegesKey.value++
@@ -106,18 +110,10 @@ export default {
       privileges,
       privilege,
       currentType,
-      otherPrivileges,
       otherPrivilegesKey,
-      formattedType: computed(() => {
-        switch (unref(currentType)) {
-          case '30d':
-            return '30 дней'
-          case '90d':
-            return '90 дней'
-          case 'forever':
-            return 'навсегда'
-        }
-      })
+      addPrivilegeToCart,
+      name: computed(() => unref(params).name),
+      formattedType: computed(() => privilegesTypeTranslator(unref(currentType)))
     }
   }
 }

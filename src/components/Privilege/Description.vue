@@ -23,6 +23,7 @@ export default {
   },
   setup (props) {
     const { description } = toRefs(props)
+
     return {
       formattedDescription: description.value
     }

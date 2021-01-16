@@ -104,6 +104,7 @@ module.exports = {
       config.plugin('html')
         .tap(args => {
           args[0].devtools = '<script src="http://localhost:8098"></script>'
+
           return [
             ...args
           ]

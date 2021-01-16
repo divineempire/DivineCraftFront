@@ -1,9 +1,9 @@
 <template>
-  <button
+  <router-link
     type="button"
     class="category-card"
     :class="`category-card--${category}`"
-    @click="emit('click')"
+    :to="`/products/${category}`"
   >
     <div class="category-card__icon-wrapper">
       <svg
@@ -19,11 +19,12 @@
         {{ title }}
       </p>
     </div>
-  </button>
+  </router-link>
 </template>
 <script>
-import { toRefs, computed, unref } from 'vue'
-import { useStore } from 'vuex'
+import { toRefs } from 'vue'
+
+import categoriesMeta from '@/constants/categoriesMeta'
 
 export default {
   name: 'CategoryCard',
@@ -36,11 +37,10 @@ export default {
   },
   setup (props) {
     const { category } = toRefs(props)
-    const store = useStore()
     const {
       icon,
       title
-    } = toRefs(unref(computed(() => store.getters['categories/getMetaForCategory'](category.value))))
+    } = categoriesMeta[category.value]
 
     return {
       icon,
@@ -62,6 +62,7 @@ export default {
   border: none;
   background-color: transparent;
   outline: none;
+  text-decoration: none;
 
   @each $category in $categories {
     &--#{$category} {

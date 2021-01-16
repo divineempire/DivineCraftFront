@@ -1,4 +1,5 @@
 @import "./privilege-colors";
+@import "./vars.scss";
 
 *,
 *::before,
@@ -15,8 +16,22 @@ body {
 }
 
 .container {
-  width: 77%;
+  width: $content-width;
   margin: 0 auto;
+
+  @each $name, $width in $min-widths {
+    &--no-#{$name} {
+      @if $name != desktop {
+        @media (min-width: $width) and (max-width: map.get($max-widths, #{$name})) {
+          width: 100%;
+        }
+      } @else {
+        @media (min-width: $width) {
+          width: 100%;
+        }
+      }
+    }
+  }
 }
 
 @each $privilege, $color in $privileges {

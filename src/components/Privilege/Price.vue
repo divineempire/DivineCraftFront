@@ -25,6 +25,7 @@
     <button
       type="button"
       class="price__add"
+      @click="$emit('addPrivilegeToCart')"
     >
       Добавить в корзину
     </button>
@@ -32,7 +33,10 @@
 </template>
 <script>
 export default {
-  name: 'Price'
+  name: 'Price',
+  emits: {
+    addPrivilegeToCart: null
+  }
 }
 </script>
 

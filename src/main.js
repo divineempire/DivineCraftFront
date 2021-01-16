@@ -17,6 +17,7 @@ import '@/assets/css/normalize.css'
 import { mobileWidth, tabletWidth, laptopWidth, desktopWidth } from '@/assets/css/vars.scss'
 // building sprite
 const req = require.context('@/assets/icons', true)
+
 req.keys().forEach(function (key) {
   req(key)
 })
@@ -33,4 +34,5 @@ const app = createApp(App)
       desktop: parseInt(desktopWidth.replace('px', ''), 10)
     }
   })
+
 app.mount('#app')

@@ -1,22 +1,23 @@
 <template>
-  <div
-    class="basket"
-    :class="`basket--${color}`"
+  <router-link
+    to="/cart"
+    class="cart"
+    :class="`cart--${color}`"
   >
-    <div class="basket__icon-wrapper">
-      <svg class="basket__icon">
-        <use xlink:href="#basket" />
+    <div class="cart__icon-wrapper">
+      <svg class="cart__icon">
+        <use xlink:href="#cart" />
       </svg>
       <transition name="amount">
         <span
           v-show="amountInCart"
-          class="basket__notification"
+          class="cart__notification"
         >
           {{ amountInCart }}
         </span>
       </transition>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -24,7 +25,7 @@ import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 export default {
-  name: 'HeaderBasket',
+  name: 'HeaderCart',
   props: {
     color: {
       type: String,
@@ -43,8 +44,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.basket {
+.cart {
+  $self: &;
   display: flex;
+  text-decoration: none;
 
   &__icon-wrapper {
     display: flex;
@@ -58,13 +61,17 @@ export default {
   }
 
   &--accent {
-    .basket__icon {
+    color: $accent;
+
+    #{$self}__icon {
       fill: $accent;
     }
   }
 
   &--text {
-    .basket__icon {
+    color: var(--text-color);
+
+    #{$self}__icon {
       fill: var(--text-color);
     }
   }

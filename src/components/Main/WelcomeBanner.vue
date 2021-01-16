@@ -44,17 +44,11 @@ export default {
 
 <style lang="scss" scoped>
 .welcome-banner {
+  @include back-retina('main/welcome-banner');
   width: 100%;
   max-width: 100%;
   min-height: 690px;
   padding-top: 30px;
-  background-image: url('~st/images/main/welcome-banner/back@1x.jpg');
-  background-position: center;
-  background-size: cover;
-
-  @media ($retina) {
-    background-image: url('~st/images/main/welcome-banner/back@2x.jpg');
-  }
 
   &__header, &__text {
     margin: 0;

@@ -8,6 +8,7 @@ export default {
     }
     if (typeof window === 'undefined') {
       app.config.globalProperties.$mq = 'no windown obj'
+
       return
     }
 

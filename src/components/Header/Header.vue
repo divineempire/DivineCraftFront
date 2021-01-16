@@ -15,7 +15,7 @@
         class="header__nav"
         :color="color"
       />
-      <HeaderBasket
+      <HeaderCart
         class="header__basket"
         :color="color"
       />
@@ -28,7 +28,7 @@ import menuLogic from '../../composition/Header/Menu'
 import menuColor from '@/composition/Header/Colors'
 
 import BurgerMenu from '@/components/Header/BurgerMenu'
-import HeaderBasket from '@/components/Header/HeaderBasket'
+import HeaderCart from '@/components/Header/HeaderCart'
 import HeaderNav from '@/components/Header/HeaderNav'
 
 export default {
@@ -36,11 +36,12 @@ export default {
   components: {
     BurgerMenu,
     HeaderNav,
-    HeaderBasket
+    HeaderCart
   },
   setup () {
     const { isMenuShow, toggleMenu } = menuLogic()
     const { color } = menuColor()
+
     return {
       color,
       isMenuShow,

@@ -8,7 +8,9 @@ export function getPrivilegesNames (state, getters) {
 
 export function getOtherPrivilegesNames (state, getters) {
   return function (privilegeName) {
-    return getters.getPrivilegesNames.filter(name => name !== privilegeName)
+    return getters.getPrivilegesNames.filter(name => {
+      return name !== privilegeName
+    })
   }
 }
 
