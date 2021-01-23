@@ -3,38 +3,98 @@
     <button
       type="button"
       class="product-in-cart__remove-button"
+      @click="removeProductFromCart"
     />
     <div class="product-in-cart__img-wrapper">
       <img
-        :src="product.imgLink"
+        :src="productDisplayData.imgLink"
         class="product-in-cart__img"
       >
     </div>
     <h3 class="product-in-cart__title">
-      {{ product.displayName }}
+      {{ productDisplayData.displayName }}
     </h3>
-    <CountableControls class="product-in-cart__controls" />
+    <component
+      :is="controlsType"
+      v-if="controlsType"
+      v-model:[modelValue]="propsForControl"
+      class="product-in-cart__controls"
+    />
     <div class="product-in-cart__price-wrapper">
       <p class="product-in-cart__price">
-        {{ product.price }}₽
+        {{ productDisplayData.price }}₽
       </p>
     </div>
   </div>
 </template>
 
 <script>
+import PrivilegeControls from '@/components/Privilege/PrivilegeControls'
 import CountableControls from '@/components/Cart/ProductInCart/CountableControls'
+
+import controlsInProductCard from '@/composition/Cart/controlsInProductCard'
+
+import { useStore } from 'vuex'
+import { toRefs } from 'vue'
 
 export default {
   name: 'ProductInCart',
   components: {
-    CountableControls
+    CountableControls,
+    PrivilegeControls
   },
   props: {
-    product: {
+    productDisplayData: {
       type: Object,
       require: true,
       default: () => ({})
+    },
+    id: {
+      type: Number,
+      require: true,
+      default: -1
+    },
+    amount: {
+      type: Number,
+      require: true,
+      default: 1
+    },
+    category: {
+      type: String,
+      require: true,
+      default: ''
+    },
+    name: {
+      type: String,
+      require: false,
+      default: ''
+    },
+    countable: {
+      type: Boolean,
+      require: true,
+      default: true
+    }
+  },
+  setup (props) {
+    const store = useStore()
+    const { id, category, countable, amount, name } = toRefs(props)
+    const {
+      modelValue,
+      needControls,
+      controlsType,
+      propsForControl
+    } = controlsInProductCard({
+      store, category, countable, amount, id, name
+    })
+
+    return {
+      removeProductFromCart: () => {
+        store.commit('cart/removeProductFromCart', id.value)
+      },
+      modelValue,
+      needControls,
+      controlsType,
+      propsForControl
     }
   }
 }

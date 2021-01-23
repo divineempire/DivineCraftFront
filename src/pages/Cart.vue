@@ -15,7 +15,7 @@
           :key="product.id"
           class="cart__products-list-item"
         >
-          <ProductInCart :product="product.productDisplayData" />
+          <ProductInCart v-bind="product" />
         </li>
       </ul>
     </div>

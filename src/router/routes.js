@@ -23,6 +23,11 @@ export default [
     component: () => import('@/pages/Cart')
   },
   {
+    path: '/terms-of-use',
+    name: 'terms-of-use',
+    component: () => import('@/pages/TermsOfUse')
+  },
+  {
     path: '/result',
     name: 'result',
     component: PaymentResult,
@@ -38,5 +43,10 @@ export default [
         component: () => import('@/components/PaymentResult/Success')
       }
     ]
+  },
+  {
+    path: '/.*/',
+    name: '404',
+    redirect: { name: 'main' }
   }
 ]

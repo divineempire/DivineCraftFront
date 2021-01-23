@@ -21,12 +21,13 @@
     >
       Донат
     </a>
-    <a
+    <router-link
+      to="/terms-of-use"
       class="nav__link"
       href="#"
     >
       Правила
-    </a>
+    </router-link>
     <a
       class="nav__link"
       href="#"

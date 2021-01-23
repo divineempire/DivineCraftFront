@@ -3,5 +3,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 export default createRouter({
   routes,
-  history: createWebHistory()
+  history: createWebHistory(),
+  scrollBehavior () {
+    return {
+      top: 0
+    }
+  }
 })

@@ -1,4 +1,4 @@
-import Vuex from 'vuex'
+import { createStore, createLogger } from 'vuex'
 import Axios from 'axios'
 // modules
 import privileges from './privileges'
@@ -9,14 +9,15 @@ import categories from './categories'
 // proxies
 import ProductsProxy from '@/proxy/Products'
 
-const store = Vuex.createStore({
+const store = createStore({
   modules: {
     privileges,
     products,
     global,
     cart,
     categories
-  }
+  },
+  plugins: [createLogger()]
 })
 
 store.$axios = Axios.create({

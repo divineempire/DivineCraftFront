@@ -1,7 +1,7 @@
 <template>
   <div class="countable-controls">
     <CountableInput
-      v-model:value="amount"
+      v-model:value="innerAmount"
       class="countable-controls__countable-input"
     />
   </div>
@@ -10,18 +10,36 @@
 <script>
 import CountableInput from '@/components/UI/CountableInput'
 
-import { ref } from 'vue'
+import { computed, toRefs } from 'vue'
 
 export default {
   name: 'CountableControls',
   components: {
     CountableInput
   },
-  setup () {
-    const amount = ref(1)
+  props: {
+    amount: {
+      type: Number,
+      require: true,
+      default: 1
+    }
+  },
+  emits: {
+    'update:amount': null
+  },
+  setup (props, { emit }) {
+    const { amount } = toRefs(props)
+    const innerAmount = computed({
+      get () {
+        return amount.value
+      },
+      set (newVal) {
+        emit('update:amount', newVal)
+      }
+    })
 
     return {
-      amount
+      innerAmount
     }
   }
 }
