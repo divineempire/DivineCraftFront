@@ -5,12 +5,10 @@ export default function (privilege) {
 
   return {
     addPrivilegeToCart: () => {
-      store.commit('cart/changeProductAmountInCart', {
+      store.commit('cart/productsModule/changeProductAmountInCart', {
         product: privilege.value,
         newAmount: 1
       })
-
-      console.log(store.state.cart.products)
     }
   }
 }

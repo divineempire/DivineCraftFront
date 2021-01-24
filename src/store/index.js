@@ -17,7 +17,7 @@ const store = createStore({
     cart,
     categories
   },
-  plugins: [createLogger()]
+  plugins: [process.env.NODE_ENV === 'development' && createLogger()]
 })
 
 store.$axios = Axios.create({

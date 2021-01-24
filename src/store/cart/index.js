@@ -1,12 +1,12 @@
-import state from './state'
-import * as mutations from './mutations'
-import * as actions from './actions'
 import * as getters from './getters'
+import buyModule from './BuyModule'
+import productsModule from './ProductsModule'
 
 export default {
-  state,
   getters,
-  mutations,
-  actions,
+  modules: {
+    buyModule,
+    productsModule
+  },
   namespaced: true
 }

@@ -1,3 +1,5 @@
+import { DARK_THEME } from '@/constants/themeNames'
+
 export default function () {
   return {
     errorText: '',
@@ -8,6 +10,7 @@ export default function () {
       privileges: 'text',
       products: 'accent',
       categories: 'text'
-    }
+    },
+    activeTheme: DARK_THEME
   }
 }

@@ -87,7 +87,7 @@ export default {
 .add-to-cart {
   position: relative;
   display: flex;
-  padding-left: 5px;
+  padding-left: 35px;
 
   &__icon {
     width: 22px;
@@ -97,16 +97,20 @@ export default {
   }
 
   &__minus-block {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     align-self: stretch;
     justify-content: center;
+    max-width: 30px;
+    height: 100%;
     padding: 0 8px;
     border: none;
     border-radius: 6px;
     background-color: $blue;
     outline: none;
-    transform: translateX(-5px);
   }
 
   &__minus {
@@ -158,6 +162,7 @@ export default {
     display: block;
     overflow: hidden;
     color: $white;
+    line-height: 19px;
     text-align: center;
   }
 
@@ -191,12 +196,12 @@ export default {
 
     &-enter-from, &-leave-to {
       opacity: 0;
-      transform: translateX(-10px);
+      transform: translateX(-5px);
     }
 
     &-enter-to {
       opacity: 1;
-      transform: translateX(-5px);
+      transform: translateX(0);
     }
   }
 }

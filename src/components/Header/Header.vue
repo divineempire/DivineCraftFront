@@ -19,17 +19,25 @@
         class="header__basket"
         :color="color"
       />
+      <!--      <Switcher-->
+      <!--        v-model:is-checked="themeSwitcher"-->
+      <!--        class="header__switcher"-->
+      <!--      />-->
     </div>
   </header>
 </template>
 
 <script>
+import { useStore } from 'vuex'
+
 import menuLogic from '../../composition/Header/Menu'
 import menuColor from '@/composition/Header/Colors'
+// import themeSwitcherLogic from '@/composition/Header/themeSwitcherLogic'
 
 import BurgerMenu from '@/components/Header/BurgerMenu'
 import HeaderCart from '@/components/Header/HeaderCart'
 import HeaderNav from '@/components/Header/HeaderNav'
+// import Switcher from '@/components/UI/Switcher'
 
 export default {
   name: 'Header',
@@ -37,15 +45,19 @@ export default {
     BurgerMenu,
     HeaderNav,
     HeaderCart
+    // Switcher
   },
   setup () {
+    const store = useStore()
     const { isMenuShow, toggleMenu } = menuLogic()
-    const { color } = menuColor()
+    const { color } = menuColor(store)
+    // const { themeSwitcher } = themeSwitcherLogic(store)
 
     return {
       color,
       isMenuShow,
       toggleMenu
+      // themeSwitcher
     }
   }
 }
@@ -68,7 +80,7 @@ export default {
     left: 5px;
   }
 
-  &__nav {
+  &__nav, &__basket {
     margin-bottom: 20px;
   }
 

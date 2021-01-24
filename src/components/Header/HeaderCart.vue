@@ -37,7 +37,7 @@ export default {
     const store = useStore()
 
     return {
-      amountInCart: computed(() => store.getters['cart/getTotalAmountInCart'])
+      amountInCart: computed(() => store.getters['cart/productsModule/getTotalAmountInCart'])
     }
   }
 }

@@ -1,22 +1,7 @@
-import { setLoadingStatus } from '@/utils/storeMixin'
-import { changePrivilegeType } from '@/utils/privilegeTypesUtils'
+import { setIsLoading } from '@/utils/storeMixin'
+import productTransformer from '@/utils/fromServerToCartProductTransformer'
 
-export { setLoadingStatus }
-
-export function changePrivilegeTypeInCart (state, { id, newType }) {
-  if (id !== 0 && !id) {
-    return
-  }
-
-  const privilege = state.products.find(product => product.id === id)
-
-  if (privilege) {
-    console.log(changePrivilegeType(privilege.name, newType))
-    privilege.name = changePrivilegeType(privilege.name, newType)
-  } else {
-    console.warn(`Can't find privilege with id: ${id} in cart to change type!`)
-  }
-}
+export { setIsLoading }
 
 export function removeProductFromCart (state, payload) {
   const productId = payload.id || payload
@@ -61,16 +46,6 @@ export function changeProductAmountInCart (state, payload) {
   if (productInCart) {
     changeAmount(productInCart, newAmount)
   } else if (newAmount > 0) {
-    const { id, countable, type, category, name, ...productDisplayData } = product
-
-    state.products.push({
-      id,
-      countable,
-      productType: type,
-      category,
-      name,
-      amount: 1,
-      productDisplayData
-    })
+    state.products.push(productTransformer(product))
   }
 }

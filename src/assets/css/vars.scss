@@ -13,7 +13,7 @@ $min-widths: (mobile: $mobile-width, tablet: $tablet-width, laptop: $laptop-widt
 $max-widths: (mobile: $tablet-width, tablet: $laptop-width, laptop: $desktop-width);
 //fonts
 $main-font: Montserrat;
-$second-font: 'Orbitron';
+$second-font: Ubuntu;
 //transition
 $transition: 0.3s ease-in-out;
 //global colors
@@ -25,6 +25,8 @@ $blue: #1C84FF;
 $grey: #9B9B9B;
 $footer-color: #0A0A0A;
 $accent: #FFC801;
+// double colors for backward compatibility
+$gold: #FFC801;
 //privileges colors
 @import "./privilege-colors.scss";
 

@@ -1,3 +1,3 @@
-export function setLoadingStatus (state, payload) {
-  state.loading = payload
+export function setIsLoading (state, payload) {
+  state.isLoading = payload
 }

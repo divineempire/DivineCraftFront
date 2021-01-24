@@ -14,7 +14,7 @@
         type="number"
         :pattern="regexpForValidation"
         class="countable-input__input"
-        :class="{'countable-input__input--disabled': disabled}"
+        :class="{'countable-input__input--focused': focused}"
         @keyup.enter="disableInput"
       >
     </label>
@@ -27,8 +27,11 @@
 </template>
 
 <script>
+import BaseInput from '@/components/abstract/BaseInput'
+
 export default {
   name: 'CountableInput',
+  mixins: [BaseInput],
   props: {
     regexpForValidation: {
       type: RegExp,
@@ -50,55 +53,27 @@ export default {
       default: 1
     }
   },
-  emits: {
-    'update:value': payload => !!payload
-  },
-  data () {
-    return {
-      disabled: true
-    }
-  },
   computed: {
     inputValue: {
       get () {
         return this.value
       },
       set (newVal) {
-        if (!this.regexpForValidation.test(newVal) && this.validator(newVal)) {
+        if (!this.regexpForValidation.test(newVal) && this.validator(Number(newVal))) {
           this.$forceUpdate()
         } else if (newVal) {
+          // eslint-disable-next-line
           this.$emit('update:value', parseInt(newVal, 10))
         }
       }
     }
   },
-  mounted () {
-    window.addEventListener('click', this.inputClickHandler)
-  },
-  unmounted () {
-    window.removeEventListener('click', this.inputClickHandler)
-  },
   methods: {
-    disableInput () {
-      this.disabled = true
-    },
     increaseValue () {
       this.inputValue = this.value + 1
     },
     decreaseValue () {
       this.inputValue = this.value - 1
-    },
-    inputClickHandler (evt) {
-      if (this.disabled && evt.target === this.$refs.input) {
-        this.disabled = false
-
-        return
-      }
-
-      if (!this.disabled && evt.target !== this.$refs.input) {
-        this.disabled = true
-        this.$refs.input.blur()
-      }
     }
   }
 }
@@ -123,10 +98,10 @@ export default {
     max-width: 100px;
     margin: 0;
     padding: 5px 10px;
-    border: 2px solid $accent;
+    border: 2px solid var(--text-color);
     border-radius: 10px;
     background-color: transparent;
-    color: $accent;
+    color: var(--text-color);
     font-size: 14px;
     line-height: 16px;
     text-align: center;
@@ -134,9 +109,9 @@ export default {
     -webkit-appearance: none;
     -moz-appearance: textfield;
 
-    &--disabled {
-      border-color: var(--text-color);
-      color: var(--text-color);
+    &--focused {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
     }
 
     &:focus {

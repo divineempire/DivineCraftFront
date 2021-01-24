@@ -13,14 +13,29 @@ export default class ProductsProxy extends Proxy {
     })
   }
 
-  checkAvailability (id) {
-    return this.submit({
-      method: 'post',
-      data: {
-        productId: id
-      },
-      endpoint: 'availability'
-    })
+  checkAvailability (payload) {
+    if (Array.isArray(payload)) {
+      return Promise.all(payload.map(item => this.submit({
+        method: 'post',
+        data: {
+          productId: item.id,
+          productType: item.productType
+        },
+        endpoint: 'availability'
+      })))
+    }
+
+    if (typeof payload === 'number') {
+      return this.submit({
+        method: 'post',
+        data: {
+          productId: payload
+        },
+        endpoint: 'availability'
+      })
+    }
+
+    throw new Error('Bad type for payload in checkAvailability')
   }
 
   buyProducts ({ coupon = '', username = '', email = '', products = [] }) {
@@ -46,6 +61,22 @@ export default class ProductsProxy extends Proxy {
   checkLastPurchases (orderId) {
     return this.submit({
       endpoint: `lastPurchasedValues/${orderId}`
+    })
+  }
+
+  checkCoupon ({ coupon, products }) {
+    if (!coupon) {
+      console.warn('Bad coupon')
+
+      return
+    }
+
+    return this.submit({
+      endpoint: 'price',
+      data: {
+        coupon,
+        products
+      }
     })
   }
 }

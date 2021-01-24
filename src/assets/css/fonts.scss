@@ -4,15 +4,17 @@ $font-weights: ("Light": 300, "Regular": 400, "Medium": 500, "SemiBold": 600, "B
     font-weight: $weight;
     font-style: normal;
     font-family: 'Montserrat';
-    src: local('Montserrat'), url('~st/fonts/Montserrat-#{$name}.woff2') format('woff2'), url('~st/fonts/Montserrat-#{$name}.woff') format('woff'), url('~st/fonts/Montserrat-#{$name}.ttf') format('truetype');
+    src: local('Montserrat'), url('~st/fonts/Montserrat/Montserrat-#{$name}.woff2') format('woff2'), url('~st/fonts/Montserrat/Montserrat-#{$name}.woff') format('woff'), url('~st/fonts/Montserrat/Montserrat-#{$name}.ttf') format('truetype');
     font-display: swap;
   }
-}
 
-@font-face {
-  font-weight: 900;
-  font-style: normal;
-  font-family: 'Orbitron';
-  src: local('Orbitron'), url('~st/fonts/orbitron-v16-latin-900.woff2') format('woff2'), url('~st/fonts/orbitron-v16-latin-900.woff') format('woff'), url('~st/fonts/orbitron-v16-latin-900.ttf') format('truetype');
-  font-display: swap;
+  @if $name != 'SemiBold' {
+    @font-face {
+      font-weight: $weight;
+      font-style: normal;
+      font-family: Ubuntu;
+      src: local('Ubuntu'), url('~st/fonts/Ubuntu/Ubuntu-#{$name}.woff2') format('woff2'), url('~st/fonts/Ubuntu/Ubuntu-#{$name}.woff') format('woff'), url('~st/fonts/Ubuntu/Ubuntu-#{$name}.ttf') format('truetype');
+      font-display: swap;
+    }
+  }
 }

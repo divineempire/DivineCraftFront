@@ -89,7 +89,7 @@ export default {
 
     return {
       removeProductFromCart: () => {
-        store.commit('cart/removeProductFromCart', id.value)
+        store.commit('cart/productsModule/removeProductFromCart', id.value)
       },
       modelValue,
       needControls,

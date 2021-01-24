@@ -11,3 +11,7 @@ export function setActiveSection (state, payload) {
     state.activeSection = payload
   }
 }
+
+export function setActiveTheme (state, payload) {
+  state.activeTheme = payload
+}

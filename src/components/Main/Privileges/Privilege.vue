@@ -105,6 +105,7 @@ export default {
   }
 
   &__price {
+    display: block;
     width: 100%;
     margin: 0;
     padding: 10px 15px;

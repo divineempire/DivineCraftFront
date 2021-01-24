@@ -1,5 +1,5 @@
 import { computed, ref } from 'vue'
-import { getPrivilegeType } from '@/utils/privilegeTypesUtils'
+import { getPrivilegeType, getPrivilegeName } from '@/utils/privilegeTypesUtils'
 
 export const PRIVILEGE_CONTROLS = 'PrivilegeControls'
 export const COUNTABLE_CONTROLS = 'CountableControls'
@@ -16,9 +16,9 @@ function providePrivilegeControls ({
         return getPrivilegeType(name.value)
       },
       set (newType) {
-        store.commit('cart/changePrivilegeTypeInCart', {
+        store.dispatch('cart/productsModule/changePrivilegeTypeInCart', {
           id: id.value,
-          newType
+          newType: `${getPrivilegeName(name.value)}_${newType}`
         })
       }
     })
@@ -37,7 +37,7 @@ function provideCountableControls ({
         return amount.value
       },
       set (newAmount) {
-        store.commit('cart/changeProductAmountInCart', {
+        store.commit('cart/productsModule/changeProductAmountInCart', {
           id: id.value,
           newAmount
         })

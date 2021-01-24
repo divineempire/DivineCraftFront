@@ -1,6 +1,7 @@
 <template>
   <div
-    class="app app--dark-theme"
+    class="app"
+    :class="{[`app--${theme}-theme`]: true}"
   >
     <Header />
     <router-view class="app__body" />
@@ -23,12 +24,13 @@ export default {
     Footer
   },
   setup () {
-    LoadProducts()
-
     const store = useStore()
 
+    LoadProducts(store)
+
     return {
-      err: computed(() => store.state.global.errorText)
+      err: computed(() => store.state.global.errorText),
+      theme: computed(() => store.state.global.activeTheme)
     }
   }
 }
@@ -41,12 +43,12 @@ export default {
 
   &--dark-theme {
     @import "assets/css/dark-theme.scss";
-    @include theme($back-color, $text-color, $header-color, $header-accent-color);
+    @include theme($back-color, $text-color, $header-color, $header-accent-color, $gold);
   }
 
   &--light-theme {
     @import "assets/css/light-theme.scss";
-    @include theme($back-color, $text-color, $header-color, $header-accent-color);
+    @include theme($back-color, $text-color, $header-color, $header-accent-color, $blue);
   }
 }
 </style>

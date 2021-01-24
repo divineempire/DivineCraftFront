@@ -1,10 +1,24 @@
-@mixin theme($back-color, $text-color, $header-color, $header-accent-color) {
+@mixin transition($properties...) {
+  $result: ();
+  $will-change: ();
+
+  @each $property in $properties {
+    $result: append($result, ($property $transition), $separator: comma);
+    $will-change: append($will-change, ($property), $separator: comma);
+  }
+
+  transition: $result;
+  will-change: $will-change;
+}
+
+@mixin theme($back-color, $text-color, $header-color, $header-accent-color, $accent-color) {
   --back-color: #{$back-color};
   --second-back-color: #{$header-color};
   --text-color: #{$text-color};
   --header-accent-color: #{$header-accent-color};
   --header-gradient: linear-gradient(180deg, #{rgb($header-color, 1)} 50%, #{rgb($header-color, 0)} 100%);
   --header-accent-gradient: linear-gradient(180deg, #{rgb($header-accent-color, 1)} 50%, #{rgb($header-accent-color, 0)} 100%);
+  --accent-color: #{$accent-color};
   background-color: var(--back-color);
   color: var(--text-color);
 }
@@ -28,17 +42,4 @@
   @media ($retina) {
     background-image: url('~st/images/#{$dir}/back@2x.jpg');
   }
-}
-
-@mixin transition($properties...) {
-  $result: ();
-  $will-change: ();
-
-  @each $property in $properties {
-    $result: append($result, ($property $transition), $separator: comma);
-    $will-change: append($will-change, ($property), $separator: comma);
-  }
-
-  transition: $result;
-  will-change: $will-change;
 }

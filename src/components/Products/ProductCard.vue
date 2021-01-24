@@ -43,10 +43,10 @@ export default {
     const store = useStore()
     const amount = computed({
       get () {
-        return store.getters['cart/getProductById'](props.product.id)?.amount || 0
+        return store.getters['cart/productsModule/getProductById'](props.product.id)?.amount || 0
       },
       set (val) {
-        store.commit('cart/changeProductAmountInCart', {
+        store.commit('cart/productsModule/changeProductAmountInCart', {
           newAmount: val,
           product: props.product
         })
@@ -64,6 +64,7 @@ export default {
 .product-card {
   width: 100%;
   max-width: 226px;
+  height: 100%;
   padding: 0 15px 15px 15px;
   border-radius: 8px;
   background-color: var(--back-color);
@@ -93,10 +94,14 @@ export default {
 
   &__price-block {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   &__price {
+    display: block;
+    margin-right: 5px;
+    margin-bottom: 5px;
     font-weight: bold;
     font-size: 26px;
     line-height: 30px;

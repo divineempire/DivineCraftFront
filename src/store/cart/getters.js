@@ -1,11 +1,7 @@
-export function getProductById (state) {
-  return function (id) {
-    return state.products.find(product => product.id === id)
-  }
+export function getTotalPrice (state, getters) {
+  return state.buyModule.priceAfterCouponCheck ?? getters['productsModule/getTotalPrice']
 }
 
-export function getTotalAmountInCart (state) {
-  return state.products.reduce((accum, product) => {
-    return accum + (product.countable ? product.amount : 1)
-  }, 0)
+export function isLoading (state) {
+  return state.buyModule.isLoading || state.buyModule.isCheckingCoupon
 }

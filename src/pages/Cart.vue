@@ -18,11 +18,16 @@
           <ProductInCart v-bind="product" />
         </li>
       </ul>
+      <MakeOrderForm
+        v-show="productsInCart.length"
+        class="cart__make-order-form"
+      />
     </div>
   </section>
 </template>
 
 <script>
+import MakeOrderForm from '@/components/Cart/MakeOrderForm'
 import Back from '@/components/UI/Back'
 import ProductInCart from '@/components/Cart/ProductInCart'
 
@@ -32,6 +37,7 @@ import { computed } from 'vue'
 export default {
   name: 'Cart',
   components: {
+    MakeOrderForm,
     Back,
     ProductInCart
   },
@@ -39,7 +45,7 @@ export default {
     const store = useStore()
 
     return {
-      productsInCart: computed(() => store.state.cart.products)
+      productsInCart: computed(() => store.state.cart.productsModule.products)
     }
   }
 }
@@ -55,13 +61,17 @@ export default {
   }
 
   &__products-list {
-    margin: 0;
+    margin: 0 0 20px 0;
     padding: 0;
     list-style: none;
 
     &-item:not(:last-child) {
       margin-bottom: 20px;
     }
+  }
+
+  &__make-order  {
+    width: 100%;
   }
 }
 </style>
