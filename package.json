@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "inspect": "rm conf.txt && vue-cli-service inspect > conf.txt",
-    "stylelint": "stylelint '**/*{.css,.scss,.vue}' --fix",
+    "stylelint": "stylelint '/src/**/*{.css,.scss,.vue}' --fix",
     "eslint": "eslint --fix . --ext .js,.vue src"
   },
   "dependencies": {

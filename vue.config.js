@@ -112,7 +112,7 @@ module.exports = {
     }
     config.plugin('stylelint')
       .use(StyleLintPlugin, [{
-        files: ['**/*.{vue,htm,html,css,sss,less,scss,sass}'],
+        files: ['src/**/*.{vue,htm,html,css,sss,less,scss,sass}'],
         fix: true
       }])
   }
