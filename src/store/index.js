@@ -9,16 +9,21 @@ import categories from './categories'
 // proxies
 import ProductsProxy from '@/proxy/Products'
 
-const store = createStore({
+const storeOptions = {
   modules: {
     privileges,
     products,
     global,
     cart,
     categories
-  },
-  plugins: [process.env.NODE_ENV === 'development' && createLogger()]
-})
+  }
+}
+const plugins = process.env.NODE_ENV === 'development' ? [createLogger()] : undefined
+
+if (plugins) {
+  storeOptions.plugins = plugins
+}
+const store = createStore(storeOptions)
 
 store.$axios = Axios.create({
   baseURL: 'https://divinecraft.online'
