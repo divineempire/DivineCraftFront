@@ -59,7 +59,16 @@ export default {
   padding: 15px;
   background-color: $footer-color;
 
+  &__container {
+    display: block;
+  }
+
+  &__info {
+    display: block;
+  }
+
   &__text {
+    display: block;
     margin: 0 0 10px 0;
     color: $white;
     font-size: 16px;
