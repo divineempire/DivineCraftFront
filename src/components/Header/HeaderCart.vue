@@ -76,4 +76,40 @@ export default {
     }
   }
 }
+@media($laptop) {
+  .cart {
+    $self: &;
+    display: flex;
+    justify-content: flex-end;
+    width: calc(calc(100% / 12) * 3);
+    text-decoration: none;
+
+    &__icon-wrapper {
+      display: flex;
+    }
+
+    &__icon {
+      display: block;
+      width: 34px;
+      height: 28px;
+      transition: fill $transition;
+    }
+
+    &--accent {
+      color: $white;
+
+      #{$self}__icon {
+        fill: $white;
+      }
+    }
+
+    &--text {
+      color: var(--text-color);
+
+      #{$self}__icon {
+        fill: var(--text-color);
+      }
+    }
+  }
+}
 </style>

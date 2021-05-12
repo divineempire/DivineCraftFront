@@ -88,4 +88,57 @@ export default {
     margin-right: 10px;
   }
 }
+
+@media($laptop) {
+  .footer {
+    padding: 30px 0;
+    background-color: $footer-color;
+
+    &__container {
+      display: flex;
+    }
+
+    &__info {
+      display: flex;
+      align-items: center;
+    }
+
+    &__text {
+      display: inline-block;
+      margin: 0 0 10px 0;
+      color: $white;
+      font-size: 16px;
+      line-height: 20px;
+      text-align: center;
+    }
+
+    &__ogrn {
+      margin-left: 50px;
+    }
+
+    &__links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      margin-left: auto;
+    }
+
+    &__link {
+      display: inline-block;
+      text-align: center;
+    }
+
+    &__call-administration {
+      width: auto;
+      margin-right: 50px;
+      margin-bottom: 0;
+      color: $accent;
+    }
+
+    &__vk-link {
+      margin-right: 10px;
+    }
+  }
+}
 </style>

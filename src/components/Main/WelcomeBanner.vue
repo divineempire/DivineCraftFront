@@ -1,6 +1,6 @@
 <template>
   <section class="welcome-banner">
-    <div class="container">
+    <div class="container welcome-banner__container">
       <div class="welcome-banner__info">
         <h1 class="welcome-banner__header">
           DivineCraft — самый динамично растущий Minecraft проект
@@ -69,6 +69,44 @@ export default {
   &__logo {
     width: 100%;
     height: auto;
+  }
+}
+
+@media($laptop) {
+  .welcome-banner {
+    @include back-retina('main/welcome-banner');
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    min-height: 690px;
+    padding-top: 30px;
+
+    &__container {
+      display: flex;
+      align-items: center;
+      align-self: center;
+    }
+
+    &__header, &__text {
+      margin: 0;
+      color: $white;
+    }
+
+    &__header {
+      margin-bottom: 30px;
+      font-weight: bold;
+      font-size: 30px;
+      line-height: 38px;
+    }
+
+    &__text {
+      margin-bottom: 30px;
+    }
+
+    &__logo {
+      width: 70%;
+      height: auto;
+    }
   }
 }
 </style>

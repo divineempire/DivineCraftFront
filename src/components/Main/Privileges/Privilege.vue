@@ -56,6 +56,7 @@ export default {
   display: flex;
   justify-content: space-between;
   max-width: 314px;
+  margin: 20px auto;
   padding-right: 5px;
   border-radius: 8px;
 
@@ -121,5 +122,86 @@ export default {
     }
   }
 
+}
+
+@media($laptop) {
+  .privilege {
+
+    display: flex;
+    justify-content: space-between;
+    width: 370px;
+    max-width: none;
+    height: 210px;
+    margin: 30px 0 0 30px;
+    padding-right: 5px;
+    border-radius: 8px;
+
+    @each $privilege, $color in $privileges {
+      &--#{$privilege} {
+        background-color: $color;
+      }
+    }
+    @supports (filter: drop-shadow(0px 4px 40px rgba(0, 193, 73, 0.4))) {
+      filter: drop-shadow(0px 4px 40px rgba(0, 193, 73, 0.4));
+    }
+
+    &__header, &__description {
+      margin: 0;
+      color: $white;
+    }
+
+    &__info {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      padding: 10px;
+    }
+
+    &__header {
+      margin-bottom: 15px;
+      font-weight: 900;
+      font-size: 20px;
+      line-height: 28px;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    &__description {
+      margin-bottom: 20px;
+      font-weight: 500;
+      font-size: 18px;
+      font-family: $second-font;
+      line-height: 21px;
+    }
+
+    &__img-wrapper {
+      align-self: center;
+      width: 120px;
+      height: 166px;
+    }
+
+    &__img {
+      width: auto;
+      height: 100%;
+    }
+
+    &__price {
+      display: block;
+      width: 100%;
+      margin: auto 0 0;
+      padding: 10px 15px;
+      border: 2px solid $white;
+      border-radius: 10px;
+      background-color: transparent;
+      color: $white;
+      outline: none;
+      text-align: center;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+  }
 }
 </style>

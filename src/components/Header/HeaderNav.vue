@@ -1,14 +1,12 @@
 <template>
-  <nav
-    class="nav"
-    :class="`nav--${color}`"
+  <a
+    class="nav__play-link"
+    href="#"
   >
-    <a
-      href="#"
-      class="nav__play-link"
-    >
-      play.divinecraft.ru
-    </a>
+    play.divinecraft.ru
+  </a>
+  <nav class="nav">
+
     <router-link
       class="nav__main nav__link"
       to="/"
@@ -45,29 +43,37 @@
 
 <script>
 export default {
-  name: 'HeaderNav',
-  props: {
-    color: {
-      type: String,
-      require: true,
-      default: 'accent'
-    }
-  }
+  name: 'HeaderNav'
+  // props: {
+  //   color: {
+  //     type: String,
+  //     require: true,
+  //     default: 'accent'
+  //   }
+  // }
 }
 </script>
 
 <style lang="scss" scoped>
-.nav {
-  &__link {
+  .nav__play-link {
     display: block;
     margin-bottom: 10px;
-    color: var(--text-color);
-    font-size: 18px;
-    font-family: $second-font;
+    color: $blue;
+    font-size: 14px;
     line-height: 21px;
-    text-decoration: none;
-    transition: color $transition;
   }
+
+  .nav {
+    &__link {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--text-color);
+      font-size: 18px;
+      font-family: $second-font;
+      line-height: 21px;
+      text-decoration: none;
+      transition: color $transition;
+    }
 
   &__link:last-child {
     margin-bottom: 0;
@@ -81,20 +87,57 @@ export default {
     line-height: 21px;
   }
 
-  &--accent {
-    .nav {
-      &__link {
-        color: $accent;
+    &--text {
+      .nav {
+        &__link {
+          color: var(--text-color);
+        }
       }
     }
   }
 
-  &--text {
+  @media($laptop) {
+    .nav__play-link {
+      display: block;
+      width: calc(calc(100% / 12) * 3);
+      margin-bottom: 0px;
+      color: $accent;
+      font-size: 14px;
+      line-height: normal;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
     .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: calc(calc(100% / 12) * 6);
+
       &__link {
+        display: block;
+        margin-bottom: 0px;
         color: var(--text-color);
+        font-size: 18px;
+        font-family: $second-font;
+        line-height: normal;
+        text-decoration: none;
+        transition: color $transition;
+      }
+
+      &__link:last-child {
+        margin-bottom: 0;
+      }
+
+      &--text {
+        .nav {
+          &__link {
+            color: var(--text-color);
+          }
+        }
       }
     }
   }
-}
 </style>

@@ -1,6 +1,7 @@
 <template>
   <header
     class="header"
+    v-if="$mq === 'mobile'"
     :class="[isMenuShow ? 'header--opened' : 'header--closed', `header--${color}`]"
   >
     <BurgerMenu
@@ -13,7 +14,6 @@
     <div class="header__navigation">
       <HeaderNav
         class="header__nav"
-        :color="color"
       />
       <HeaderCart
         class="header__basket"
@@ -23,6 +23,21 @@
       <!--        v-model:is-checked="themeSwitcher"-->
       <!--        class="header__switcher"-->
       <!--      />-->
+    </div>
+  </header>
+  <header
+    class="header"
+    v-else
+  >
+    <div class="header__navigation">
+      <HeaderNav
+        :color="color"
+        class="header__nav"
+      />
+      <HeaderCart
+        :color="color"
+        class="header__basket"
+      />
     </div>
   </header>
 </template>
@@ -146,6 +161,44 @@ export default {
 
     .header__navigation::after {
       opacity: 1;
+    }
+  }
+}
+
+@media ($laptop) {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    padding-left: 0px;
+    background-color: #252525;
+    box-shadow: 0px 1px 20px -5px rgba(0, 0, 0, 0.35);
+    transition: transform $transition, background-color $transition;
+
+    &::before, &::after {
+      display: none;
+    }
+
+    &__nav, &__basket {
+      margin-bottom: 0px;
+    }
+
+    &__navigation {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: $content-width;
+      height: 70px;
+      margin: 0 auto;
+      padding-top: 0;
+      padding-left: 0;
+      transition: opacity $transition;
+
+      &::before, &::after {
+        display: none;
+      }
     }
   }
 }
