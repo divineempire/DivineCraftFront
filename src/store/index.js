@@ -26,7 +26,7 @@ if (plugins) {
 const store = createStore(storeOptions)
 
 store.$axios = Axios.create({
-  baseURL: 'https://divinecraft.online'
+  baseURL: 'https://api.divinecraft.ru'
 })
 
 store.$submit = function ({ method = 'get', data = null, query = null, url = '' }) {

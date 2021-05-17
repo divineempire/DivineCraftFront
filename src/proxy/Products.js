@@ -5,13 +5,27 @@ export default class ProductsProxy extends Proxy {
     super(store, 'api/products')
   }
 
-  getProducts (type = '') {
-    return this.submit({
-      query: {
-        type
-      }
-    })
+  getPrivileges () {
+    return this.submit(
+      {
+        endpoint: 'privilege'
+      })
   }
+
+  getProducts () {
+    return this.submit(
+      {
+        endpoint: 'simple'
+      })
+  }
+
+  // getProducts (type = '') {
+  //   return this.submit({
+  //     query: {
+  //       type
+  //     }
+  //   })
+  // }
 
   checkAvailability (payload) {
     if (Array.isArray(payload)) {
