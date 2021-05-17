@@ -49,4 +49,26 @@ export default {
     line-height: 26px;
   }
 }
+@media($laptop) {
+  .description {
+    width: 40%;
+    margin-top: 75px;
+
+    &__title {
+      margin: 0 0 15px 0;
+      color: var(--text-color);
+      font-weight: bold;
+      font-size: 26px;
+      line-height: 30px;
+    }
+
+    &__text {
+      margin: 0;
+      color: var(--text-color);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 26px;
+    }
+  }
+}
 </style>

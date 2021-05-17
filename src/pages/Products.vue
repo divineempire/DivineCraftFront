@@ -61,4 +61,23 @@ export default {
     text-align: center;
   }
 }
+@media($laptop) {
+  .products {
+    @include back-retina('products');
+    min-height: 100vh;
+    padding: 70px 0 0;
+
+    &__back {
+      margin-bottom: 10px;
+    }
+
+    &__title {
+      margin: 0 0 25px 0;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 35px;
+      text-align: center;
+    }
+  }
+}
 </style>

@@ -89,4 +89,47 @@ export default {
     }
   }
 }
+@media($laptop) {
+  .intro {
+    &__controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+
+    &__control {
+      $self: &;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid var(--text-color);
+      border-radius: 10px;
+      background-color: transparent;
+      transition: border-color $transition;
+
+      &-text {
+        @include transition(color);
+        color: var(--text-color);
+      }
+
+      &--active {
+        border-color: $blue;
+
+        #{$self} {
+          &-text {
+            color: $blue;
+          }
+        }
+      }
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
 </style>

@@ -74,4 +74,41 @@ export default {
     line-height: 12px;
   }
 }
+
+@media($laptop) {
+  .back {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    background-color: transparent;
+    text-decoration: none;
+
+    &__link {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+      text-decoration: none;
+    }
+
+    &__icon {
+      margin-right: 10px;
+      fill: var(--text-color);
+    }
+
+    &__text {
+      display: block;
+      color: var(--text-color);
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 17px;
+    }
+
+    &__description {
+      margin: 0;
+      color: $grey;
+      font-size: 10px;
+      line-height: 12px;
+    }
+  }
+}
 </style>

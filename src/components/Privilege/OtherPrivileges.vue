@@ -63,4 +63,27 @@ export default {
     margin-bottom: 20px;
   }
 }
+@media($laptop) {
+  .other-privileges {
+    width: 30%;
+    margin-top: 75px;
+
+    &__title {
+      margin: 0 0 20px 0;
+      font-weight: normal;
+      font-size: 24px;
+      line-height: 29px;
+    }
+
+    &__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    &__item {
+      margin-bottom: 20px;
+    }
+  }
+}
 </style>

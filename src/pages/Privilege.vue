@@ -132,4 +132,24 @@ export default {
     margin-bottom: 30px;
   }
 }
+@media($laptop) {
+  .privilege {
+    padding-top: 70px;
+    background-color: transparent;
+
+    &__back {
+      margin: 50px 8%;
+    }
+
+    &__intro, &__price, &__description {
+      margin-bottom: 0px;
+    }
+
+    &__content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+  }
+}
 </style>
