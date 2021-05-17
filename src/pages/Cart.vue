@@ -1,23 +1,25 @@
 <template>
   <section class="cart">
-    <div class="container">
-      <div class="cart__back-wrapper">
-        <Back
-          class="cart__back"
-          to="/"
-        >
-          Вернуться к покупкам
-        </Back>
+    <div class="container cart__container">
+      <div class="cart__products-wrapper">
+        <div class="cart__back-wrapper">
+          <Back
+            class="cart__back"
+            to="/"
+          >
+            Вернуться к покупкам
+          </Back>
+        </div>
+        <ul class="cart__products-list">
+          <li
+            :key="product.id"
+            class="cart__products-list-item"
+            v-for="product in productsInCart"
+          >
+            <ProductInCart v-bind="product"/>
+          </li>
+        </ul>
       </div>
-      <ul class="cart__products-list">
-        <li
-          v-for="product in productsInCart"
-          :key="product.id"
-          class="cart__products-list-item"
-        >
-          <ProductInCart v-bind="product" />
-        </li>
-      </ul>
       <MakeOrderForm
         v-show="productsInCart.length"
         class="cart__make-order-form"
@@ -70,8 +72,48 @@ export default {
     }
   }
 
-  &__make-order  {
+  &__make-order {
     width: 100%;
+  }
+}
+
+@media($laptop) {
+  .cart {
+    @include back-retina('cart');
+    width: 100%;
+    min-height: 100vh;
+    margin-top: 70px;
+
+    &__container {
+      display: flex;
+      justify-content: space-around;
+      padding-top: 25px;
+    }
+
+    &__products-wrapper {
+      display: inline-block;
+      width: 65%;
+    }
+
+    &__back-wrapper {
+      padding: 15px 15px;
+      border-radius: 10px;
+      background: #252525;
+    }
+
+    &__products-list {
+      margin: 20px 0 20px 0;
+      padding: 0;
+      list-style: none;
+
+      &-item:not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
+
+    &__make-order-form {
+      width: 30%;
+    }
   }
 }
 </style>
