@@ -1,5 +1,5 @@
-export function getPrivileges (state, getters, rootState) {
-  return rootState.products.products.filter(product => product.category === 'priv' || product.category === '')
+export function getPrivileges (state, getters) {
+  return state.privileges
 }
 
 export function getPrivilegesNames (state, getters) {
