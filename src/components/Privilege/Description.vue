@@ -3,6 +3,17 @@
     <h3 class="description__title">
       Описание
     </h3>
+    <select
+      v-model="selectedDesc"
+      class="description__select"
+    >
+      <option
+        v-for="(descT, i) in descriptions"
+        :key="i"
+      >
+        {{ descT }}
+      </option>
+    </select>
     <p class="description__text">
       {{ formattedDescription }}
     </p>
@@ -10,7 +21,7 @@
 </template>
 
 <script>
-import { toRefs } from 'vue'
+import { toRefs, ref, computed } from 'vue'
 
 export default {
   name: 'Description',
@@ -22,10 +33,24 @@ export default {
     }
   },
   setup (props) {
-    const { description } = toRefs(props)
+    const needSelector = typeof (props.description) === 'object'
 
-    return {
-      formattedDescription: description.value
+    if (needSelector) {
+      const descriptions = Object.keys(props.description)
+      const selectedDesc = ref(descriptions[0])
+      const formattedDescription = computed(() => props.description[selectedDesc.value])
+
+      return {
+        selectedDesc,
+        descriptions,
+        formattedDescription
+      }
+    } else {
+      const { description } = toRefs(props)
+
+      return {
+        formattedDescription: description.value
+      }
     }
   }
 }
@@ -39,6 +64,17 @@ export default {
     font-weight: bold;
     font-size: 26px;
     line-height: 30px;
+  }
+
+  &__select {
+    width: 50%;
+    margin-bottom: 15px;
+    padding: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    background: #252525;
+    color: white;
+    outline: none;
   }
 
   &__text {

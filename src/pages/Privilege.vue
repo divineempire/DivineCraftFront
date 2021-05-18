@@ -45,7 +45,7 @@
         </Price>
         <Description
           class="privilege__description"
-          :description="privilege.description"
+          :description="privilege.meta.desk"
         />
         <OtherPrivileges
           :key="otherPrivilegesKey"
