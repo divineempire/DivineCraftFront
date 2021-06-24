@@ -10,6 +10,14 @@
         </p>
       </div>
       <div class="footer__links">
+       <a
+          href="https://vk.com/@divinecraftru-polzovatelskoe-soglashenie"
+          target="_blank"
+          class="footer__link footer__call-administration"
+        >
+          Пользовательское соглашение
+        </a>
+
         <a
           href="https://vk.me/divinecraftru"
           target="_blank"
